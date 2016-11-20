@@ -44,6 +44,8 @@ import com.vuforia.samples.SampleApplication.utils.SampleUtils;
 import com.vuforia.samples.SampleApplication.utils.Teapot;
 import com.vuforia.samples.SampleApplication.utils.Texture;
 
+import static java.lang.Math.max;
+
 
 // The renderer class for the ImageTargets sample.
 public class ImageTargetRenderer implements GLSurfaceView.Renderer, SampleAppRendererControl
@@ -67,6 +69,12 @@ public class ImageTargetRenderer implements GLSurfaceView.Renderer, SampleAppRen
     private static final int launchThreshold = 100;
     private static final int durationOfMotion = 40;
     private static final int durationOfAnimation = 60;
+    private static final int center_x = 0;
+    private static final int center_y = 0;
+    private static final int center_z = -1000;
+    private float trackable_x;
+    private float trackable_y;
+    private float trackable_z;
     private float firstFrameLocation = 0.0f;
     private int noOfFramesTracked = 0;
     private int noOfFramesAfterLaunch = 0;
@@ -132,6 +140,9 @@ public class ImageTargetRenderer implements GLSurfaceView.Renderer, SampleAppRen
                 noOfFramesTracked++;
                 if (noOfFramesTracked >= durationOfMotion) {
                     if (firstFrameLocation - depth >= launchThreshold) {
+                        trackable_x = data[3];
+                        trackable_y = data[7];
+                        trackable_z = depth;
                         launchTheFireBall();
                         lastLaunchFrame = noOfFramesTracked;
                         noOfFramesAfterLaunch = 0;
@@ -154,7 +165,8 @@ public class ImageTargetRenderer implements GLSurfaceView.Renderer, SampleAppRen
     private void renderFireballAnimation(float[] modelViewProjection) {
         float framesPerHalfScaleDown = 10.0f;
         float scaleDownFactor = noOfFramesAfterLaunch == 0 ? 1.0f : 1 / (noOfFramesAfterLaunch/framesPerHalfScaleDown);
-        Matrix.translateM(modelViewProjection, 0, 0, 0, -20);
+
+        Matrix.translateM(modelViewProjection, 0, max(center_x - trackable_x, 10), max(center_y - trackable_y, 10), max(center_z - trackable_z, 10));
         Matrix.scaleM(modelViewProjection, 0, scaleDownFactor, scaleDownFactor, scaleDownFactor);
         renderTeaPot(0, modelViewProjection);
     }
