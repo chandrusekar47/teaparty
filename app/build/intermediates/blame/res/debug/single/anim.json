@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/chandrasekar/Desktop/vuforiasdk/samples/Core/app/build/intermediates/res/merged/debug/anim/bottom_down.xml",
+        "source": "/home/chandrasekar/Desktop/vuforiasdk/samples/Core/app/src/main/res/anim/bottom_down.xml"
+    },
+    {
+        "merged": "/home/chandrasekar/Desktop/vuforiasdk/samples/Core/app/build/intermediates/res/merged/debug/anim/bottom_up.xml",
+        "source": "/home/chandrasekar/Desktop/vuforiasdk/samples/Core/app/src/main/res/anim/bottom_up.xml"
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/chandrasekar/Desktop/vuforiasdk/samples/Core/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/icon.png",
+        "source": "/home/chandrasekar/Desktop/vuforiasdk/samples/Core/app/src/main/res/drawable-hdpi/icon.png"
+    },
+    {
+        "merged": "/home/chandrasekar/Desktop/vuforiasdk/samples/Core/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/logo.png",
+        "source": "/home/chandrasekar/Desktop/vuforiasdk/samples/Core/app/src/main/res/drawable-hdpi/logo.png"
+    }
+]
