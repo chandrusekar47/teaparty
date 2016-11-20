@@ -67,7 +67,7 @@ public class ImageTargetRenderer implements GLSurfaceView.Renderer, SampleAppRen
     private Teapot mTeapot;
 
     private static final int launchThreshold = 100;
-    private static final int durationOfMotion = 40;
+    private static final int durationOfMotion = 30;
     private static final int durationOfAnimation = 60;
     private static final int center_x = 0;
     private static final int center_y = 0;
@@ -165,7 +165,9 @@ public class ImageTargetRenderer implements GLSurfaceView.Renderer, SampleAppRen
     private void renderFireballAnimation(float[] modelViewProjection) {
         float framesPerHalfScaleDown = 10.0f;
         float scaleDownFactor = noOfFramesAfterLaunch == 0 ? 1.0f : 1 / (noOfFramesAfterLaunch/framesPerHalfScaleDown);
-
+        if (noOfFramesAfterLaunch <= 2) {
+            Matrix.translateM(modelViewProjection,0, trackable_x, trackable_y, trackable_z);
+        }
         Matrix.translateM(modelViewProjection, 0, max(center_x - trackable_x, 10), max(center_y - trackable_y, 10), max(center_z - trackable_z, 10));
         Matrix.scaleM(modelViewProjection, 0, scaleDownFactor, scaleDownFactor, scaleDownFactor);
         renderTeaPot(0, modelViewProjection);
